@@ -8,7 +8,7 @@ public interface IDinnerModel {
 	public void setNumberOfGuests(int numberOfGuests);
 	
 	/**
-	 * Returns the dish that is on the menu for selected type (1 = starter, 2 = main, 3 = desert).
+	 * Returns the dish that is on the menu for selected type (1 = starter, 2 = main, 3 = dessert).
 	 */
 	public Dish getSelectedDish(int type);
 	
