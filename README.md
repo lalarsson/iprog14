@@ -1,4 +1,4 @@
-iprog14
-=======
+Interaction Programing - Lab assignment - Android
+=================================================
 
-Public repository for the course "Interactionprogramming" 
+This project contains the startup code for Android version of the Interaction Programing course lab assignment. For more details on how to complete the assignment follow the instructions on the [course website](https://www.kth.se/social/course/DH2641).
