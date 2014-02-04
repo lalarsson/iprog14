@@ -9,15 +9,17 @@ public class ExampleView {
 
 	View view;
 
-	public ExampleView(View view) {
+	DinnerModel model; // we add class variable
 
-		// store in the class the reference to the Android View
-		this.view = view;
+	public ExampleView(View view, DinnerModel model) {
+	 // store in the class the reference to the Android View
+	 this.view = view;
+	 // and the reference to the model
+	 this.model = model;
 
-		TextView example = (TextView) view.findViewById(R.id.example_text);
-		example.setText("Hello world");
-
-		// Setup the rest of the view layout
+	 TextView example = (TextView) view.findViewById(R.id.example_text);
+	 example.setText("Total price: " + model.getTotalMenuPrice());
+	 // Setup the rest of the view layout
 	}
 
 }
