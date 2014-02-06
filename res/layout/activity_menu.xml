@@ -5,10 +5,22 @@
     android:gravity="center"
     android:id="@+id/this_is_example_view_id" >
 
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="52dp"
+        android:text="Button" />
+
     <TextView
         android:id="@+id/example_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="78dp"
+        android:text="Welcome to Dinner Planner \n\n Here You will be able to easily plan Your Dinner \n\n On the next page start by selecting number of participants. Then select Your courses. \n\n Watch Magic Happen!" />
 
 </RelativeLayout>

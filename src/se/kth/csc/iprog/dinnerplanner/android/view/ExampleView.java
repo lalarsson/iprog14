@@ -16,9 +16,7 @@ public class ExampleView {
 	 this.view = view;
 	 // and the reference to the model
 	 this.model = model;
-
-	 TextView example = (TextView) view.findViewById(R.id.example_text);
-	 example.setText("Total price: " + model.getTotalMenuPrice());
+	 
 	 // Setup the rest of the view layout
 	}
 

@@ -29,13 +29,60 @@ public final class R {
         public static final int toast=0x7f020005;
     }
     public static final class id {
-        public static final int example_text=0x7f070001;
+        public static final int ImageButton01=0x7f07000e;
+        public static final int ImageButton02=0x7f070010;
+        public static final int ImageButton03=0x7f07000f;
+        public static final int ImageButton04=0x7f07000d;
+        public static final int ImageButton05=0x7f07000c;
+        public static final int ImageButton06=0x7f07000b;
+        public static final int ImageButton07=0x7f07000a;
+        public static final int ImageButton08=0x7f070009;
+        public static final int ImageButton09=0x7f070023;
+        public static final int ImageButton10=0x7f070021;
+        public static final int ImageButton11=0x7f070020;
+        public static final int ImageButton12=0x7f07001f;
+        public static final int ImageButton13=0x7f07001e;
+        public static final int ImageButton14=0x7f07001d;
+        public static final int ImageButton15=0x7f07001c;
+        public static final int ImageButton16=0x7f07001b;
+        public static final int ImageButton17=0x7f07001a;
+        public static final int ImageButton18=0x7f070019;
+        public static final int ImageButton19=0x7f070018;
+        public static final int ImageButton20=0x7f070017;
+        public static final int ImageButton21=0x7f070016;
+        public static final int ImageButton22=0x7f070015;
+        public static final int ImageButton23=0x7f070014;
+        public static final int ImageView01=0x7f07002e;
+        public static final int ImageView02=0x7f07002d;
+        public static final int ImageView03=0x7f07002c;
+        public static final int ImageView04=0x7f07002b;
+        public static final int ImageView05=0x7f07002a;
+        public static final int ImageView06=0x7f070029;
+        public static final int ImageView07=0x7f070028;
+        public static final int ImageView08=0x7f070027;
+        public static final int ImageView09=0x7f070026;
+        public static final int ImageView10=0x7f070025;
+        public static final int ImageView11=0x7f070024;
+        public static final int button1=0x7f070001;
+        public static final int example_text=0x7f070002;
+        public static final int horizontalScrollView1=0x7f070008;
+        public static final int horizontalScrollView2=0x7f070013;
+        public static final int horizontalScrollView3=0x7f070012;
+        public static final int imageButton1=0x7f070011;
+        public static final int imageButton2=0x7f070022;
+        public static final int imageView1=0x7f07002f;
+        public static final int numberPicker1=0x7f070005;
+        public static final int textView1=0x7f070004;
+        public static final int textView2=0x7f070006;
+        public static final int textView3=0x7f070007;
         public static final int this_is_example_view_id=0x7f070000;
+        public static final int this_is_example_view_id2=0x7f070003;
     }
     public static final class layout {
-        public static final int actitivity_menuchooser=0x7f030000;
-        public static final int activity_menu=0x7f030001;
+        public static final int activity_menu=0x7f030000;
+        public static final int activity_menuchooser=0x7f030001;
         public static final int activity_startscreen=0x7f030002;
+        public static final int dish=0x7f030003;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;

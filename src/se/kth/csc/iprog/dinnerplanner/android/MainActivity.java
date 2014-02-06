@@ -18,7 +18,7 @@ public class MainActivity extends Activity {
         
     	// Creating the view class instance
         DinnerModel model = ((DinnerPlannerApplication) this.getApplication()).getModel();
-        ExampleView mainView = new ExampleView(findViewById(R.id.this_is_example_view_id), model);
+        ExampleView mainView = new ExampleView(findViewById(R.id.this_is_example_view_id2), model);
 
     }
 
