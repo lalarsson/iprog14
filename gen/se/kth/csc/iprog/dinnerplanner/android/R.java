@@ -29,14 +29,14 @@ public final class R {
         public static final int toast=0x7f020005;
     }
     public static final class id {
-        public static final int ImageButton01=0x7f07000e;
-        public static final int ImageButton02=0x7f070010;
-        public static final int ImageButton03=0x7f07000f;
-        public static final int ImageButton04=0x7f07000d;
-        public static final int ImageButton05=0x7f07000c;
-        public static final int ImageButton06=0x7f07000b;
-        public static final int ImageButton07=0x7f07000a;
-        public static final int ImageButton08=0x7f070009;
+        public static final int ImageButton01=0x7f07000f;
+        public static final int ImageButton02=0x7f070011;
+        public static final int ImageButton03=0x7f070010;
+        public static final int ImageButton04=0x7f07000e;
+        public static final int ImageButton05=0x7f07000d;
+        public static final int ImageButton06=0x7f07000c;
+        public static final int ImageButton07=0x7f07000b;
+        public static final int ImageButton08=0x7f07000a;
         public static final int ImageButton09=0x7f070023;
         public static final int ImageButton10=0x7f070021;
         public static final int ImageButton11=0x7f070020;
@@ -65,16 +65,16 @@ public final class R {
         public static final int ImageView11=0x7f070024;
         public static final int button1=0x7f070001;
         public static final int example_text=0x7f070002;
-        public static final int horizontalScrollView1=0x7f070008;
+        public static final int horizontalScrollView1=0x7f070009;
         public static final int horizontalScrollView2=0x7f070013;
-        public static final int horizontalScrollView3=0x7f070012;
-        public static final int imageButton1=0x7f070011;
+        public static final int horizontalScrollView3=0x7f070007;
+        public static final int imageButton1=0x7f070012;
         public static final int imageButton2=0x7f070022;
         public static final int imageView1=0x7f07002f;
         public static final int numberPicker1=0x7f070005;
         public static final int textView1=0x7f070004;
         public static final int textView2=0x7f070006;
-        public static final int textView3=0x7f070007;
+        public static final int textView3=0x7f070008;
         public static final int this_is_example_view_id=0x7f070000;
         public static final int this_is_example_view_id2=0x7f070003;
     }
@@ -82,7 +82,6 @@ public final class R {
         public static final int activity_menu=0x7f030000;
         public static final int activity_menuchooser=0x7f030001;
         public static final int activity_startscreen=0x7f030002;
-        public static final int dish=0x7f030003;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
