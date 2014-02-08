@@ -24,9 +24,10 @@ public class MainActivity extends Activity {
         
     	// Creating the view class instance
         DinnerModel model = ((DinnerPlannerApplication) this.getApplication()).getModel();
+
         
         
-        /* CODE TO DYNAMICALLY LOAD DATA FROM MODEL INTO VIEW FOR MENUCHOOSER!
+        /* CODE TO DYNAMICALLY LOAD DATA FROM MODEL INTO VIEW FOR MENUCHOOSER!*/
         ExampleView mainView = new ExampleView(findViewById(R.id.menuchooser), model);
         
         LinearLayout ll1 = (LinearLayout) findViewById(R.id.linearLayoutViewStarter);
@@ -70,7 +71,7 @@ public class MainActivity extends Activity {
    	 	ll1.invalidate();
    	 	ll2.invalidate();
    	 	ll3.invalidate();
-   	 	*/
+
     }
 
 }
