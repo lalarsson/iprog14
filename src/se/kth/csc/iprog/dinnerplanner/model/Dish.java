@@ -7,7 +7,7 @@ public class Dish {
 	
 	public static final int STARTER = 1;
 	public static final int MAIN = 2;
-	public static final int DESERT = 3;
+	public static final int DESSERT = 3;
 	
 	String name;
 	int type; // starter (1), main (2) or desert (3)  

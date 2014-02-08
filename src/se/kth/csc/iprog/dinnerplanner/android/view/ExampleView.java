@@ -2,7 +2,11 @@ package se.kth.csc.iprog.dinnerplanner.android.view;
 
 import se.kth.csc.iprog.dinnerplanner.android.R;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
+import se.kth.csc.iprog.dinnerplanner.model.Dish;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ExampleView {
@@ -16,10 +20,10 @@ public class ExampleView {
 	 this.view = view;
 	 // and the reference to the model
 	 this.model = model;
-
-	 TextView example = (TextView) view.findViewById(R.id.example_text);
-	 example.setText("Total price: " + model.getTotalMenuPrice());
+	 
 	 // Setup the rest of the view layout
+	
+	 
 	}
 
 }
