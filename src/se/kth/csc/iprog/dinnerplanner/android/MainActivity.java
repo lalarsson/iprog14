@@ -1,6 +1,6 @@
 package se.kth.csc.iprog.dinnerplanner.android;
 
-import se.kth.csc.iprog.dinnerplanner.android.view.ExampleView;
+import se.kth.csc.iprog.dinnerplanner.android.view.MenuChooser;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
 import android.os.Bundle;
@@ -17,18 +17,16 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         // Default call to load previous state
     	super.onCreate(savedInstanceState);
+    	Dish starter = null;
+    	Dish main = null;
+    	Dish dessert = null;
     	
-    	// Set the view for the main activity screen
-    	// it must come before any call to findViewById method
-        setContentView(R.layout.activity_main);
-        
     	// Creating the view class instance
         DinnerModel model = ((DinnerPlannerApplication) this.getApplication()).getModel();
-
         
-        
-        /* CODE TO DYNAMICALLY LOAD DATA FROM MODEL INTO VIEW FOR MENUCHOOSER!*/
-        ExampleView mainView = new ExampleView(findViewById(R.id.menuchooser), model);
+        /* CODE TO DYNAMICALLY LOAD DATA FROM MODEL INTO VIEW FOR MENUCHOOSER!
+        setContentView(R.layout.activity_main);
+        MenuChooser mainView = new MenuChooser(findViewById(R.id.menuchooser), model);
         
         LinearLayout ll1 = (LinearLayout) findViewById(R.id.linearLayoutViewStarter);
    	 	for(Dish dish : model.getDishesOfType(1)){
@@ -71,7 +69,16 @@ public class MainActivity extends Activity {
    	 	ll1.invalidate();
    	 	ll2.invalidate();
    	 	ll3.invalidate();
+   	 	
+   	 	*/
+        /* CODE TO DYNAMICALLY LOAD DATA FROM MODEL INTO VIEW FOR MENU! */
+        
+        
+        setContentView(R.layout.activity_menu);
+        MenuChooser mainView = new MenuChooser(findViewById(R.id.menu), model);
+        
 
     }
+    
 
 }
