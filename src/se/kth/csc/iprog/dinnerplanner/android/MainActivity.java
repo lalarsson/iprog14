@@ -88,7 +88,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_menu);
 		MenuChooser mainView = new MenuChooser(findViewById(R.id.menu), model);
 		/* Testing purposes*/
-		int currentView = 0; // 0 for ingredients, 1 for start, 2 for main, 3 for dessert
+		int currentView = 3; // 0 for ingredients, 1 for start, 2 for main, 3 for dessert
 		starter = model.getDish("French toast", 1);
 		main = model.getDish("Meat balls", 2);
 		dessert = model.getDish("Ice Cream", 3);
@@ -98,43 +98,50 @@ public class MainActivity extends Activity {
 		menu[2] = dessert;
 		
 		/*Testing end*/
+		double price = 0;
+		for(Dish x : menu){
+			for(Ingredient ingred : x.getIngredients()){
+				price += ingred.getPrice();
+			}
+		}
+		
+		TextView tv = (TextView) findViewById(R.id.total_cost);
+		tv.setText("Total Cost: " + price);
+		
+		ImageButton starterB = ((ImageButton) findViewById(R.id.menu_starter));
+		starterB.setImageResource(getResources().getIdentifier(starter.getImage(), "drawable", getPackageName()));
+		TextView tvStarter = ((TextView) findViewById(R.id.menu_textstarter));
+		tvStarter.setText(starter.getName());
+		
+		
+		ImageButton mainB = ((ImageButton) findViewById(R.id.menu_main));
+		mainB.setImageResource(getResources().getIdentifier(main.getImage(), "drawable", getPackageName()));
+		TextView tvMain = ((TextView) findViewById(R.id.menu_textmain));
+		tvMain.setText(main.getName());
+		
+		ImageButton dessertB = ((ImageButton) findViewById(R.id.menu_dessert));
+		dessertB.setImageResource(getResources().getIdentifier(dessert.getImage(), "drawable", getPackageName()));
+		TextView tvDessert = ((TextView) findViewById(R.id.menu_textdessert));
+		tvDessert.setText(dessert.getName());
+		
+	
 		switch (currentView) {
-		case 0: 
-			loadIngred(mainView, model, menu);
-		case 1:
-			//loadStarter(mainView, model, starter);
-		case 2:
-			//loadMain(mainView, model, main);
-		case 3:
-			//loadDessert(mainView, model, dessert);
-		default:
-			//loadDefault(mainView);
+		case 0: loadIngred(mainView, model, menu);break;
+		case 1: loadStarter(mainView, model, starter);break;
+		case 2: loadMain(mainView, model, main);break;
+		case 3: loadDessert(mainView, model, dessert);break;
+		default:loadDefault(mainView);break;
 		}
 
 	}
 
 	void loadIngred(MenuChooser v, DinnerModel model, Dish[] menu) {
-		
-		Dish s = menu[0];
-		Dish m = menu[1];
-		Dish d = menu[2];
-		double price = 0;
 		Set<Ingredient> allIngreds = new HashSet<Ingredient>();
-		for(Ingredient ingred : s.getIngredients()){
-			price += ingred.getPrice();
-			allIngreds.add(ingred);
+		for(Dish x : menu){
+			for(Ingredient ingred : x.getIngredients()){
+				allIngreds.add(ingred);
+			}
 		}
-		for(Ingredient ingred : m.getIngredients()){
-			price += ingred.getPrice();
-			allIngreds.add(ingred);
-		}
-		for(Ingredient ingred : d.getIngredients()){
-			price += ingred.getPrice();
-			allIngreds.add(ingred);
-		}
-		
-		TextView tv = (TextView) findViewById(R.id.total_cost);
-		tv.setText("Total Cost: " + price);
 		
 		TextView content = (TextView) findViewById(R.id.menu_textcontent);
 		TextView title = (TextView) findViewById(R.id.menu_textTitle);
@@ -145,36 +152,36 @@ public class MainActivity extends Activity {
 		}
 		content.setText(sb.toString());
 		
-		ImageButton starter = ((ImageButton) findViewById(R.id.menu_starter));
-		starter.setImageResource(getResources().getIdentifier(s.getImage(), "drawable", getPackageName()));
-		TextView tvStarter = ((TextView) findViewById(R.id.menu_textstarter));
-		tvStarter.setText(s.getName());
-		
-		
-		ImageButton main = ((ImageButton) findViewById(R.id.menu_main));
-		main.setImageResource(getResources().getIdentifier(m.getImage(), "drawable", getPackageName()));
-		TextView tvMain = ((TextView) findViewById(R.id.menu_textmain));
-		tvMain.setText(m.getName());
-		
-		ImageButton dessert = ((ImageButton) findViewById(R.id.menu_dessert));
-		dessert.setImageResource(getResources().getIdentifier(d.getImage(), "drawable", getPackageName()));
-		TextView tvDessert = ((TextView) findViewById(R.id.menu_textdessert));
-		tvDessert.setText(d.getName());
 	}
 
 	void loadStarter(MenuChooser v, DinnerModel m, Dish d) {
-
+		TextView content = (TextView) findViewById(R.id.menu_textcontent);
+		TextView title = (TextView) findViewById(R.id.menu_textTitle);
+		title.setText("Starter Course");
+		String s = d.getDescription().replace(". ", ".\n\n");
+		content.setText(d.getName() + "\n" + s);
 	}
 
 	void loadMain(MenuChooser v, DinnerModel m, Dish d) {
+		TextView content = (TextView) findViewById(R.id.menu_textcontent);
+		TextView title = (TextView) findViewById(R.id.menu_textTitle);
+		title.setText("Main Course");
+		String s = d.getDescription().replace(". ", ".\n\n");
+		content.setText(d.getName() + "\n" + s);
 
 	}
 
 	void loadDessert(MenuChooser v, DinnerModel m, Dish d) {
+		TextView content = (TextView) findViewById(R.id.menu_textcontent);
+		TextView title = (TextView) findViewById(R.id.menu_textTitle);
+		title.setText("Dessert Course");
+		String s = d.getDescription().replace(". ", ".\n\n");
+		content.setText(d.getName() + "\n" + s);
 
 	}
 
 	void loadDefault(MenuChooser v) {
+		//no default
 
 	}
 
