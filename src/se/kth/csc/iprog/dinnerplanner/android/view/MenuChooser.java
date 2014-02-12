@@ -22,8 +22,5 @@ public class MenuChooser {
 	 this.model = model;
 	 
 	 // Setup the rest of the view layout
-	
-	 
 	}
-
 }

@@ -3,11 +3,14 @@ package se.kth.csc.iprog.dinnerplanner.model;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DinnerModel implements IDinnerModel{
+import android.database.Observable;
+
+public class DinnerModel extends Observable implements IDinnerModel{
 	
 
 	Set<Dish> dishes = new HashSet<Dish>();
 	private int numOfGuests, numOfDishes;
+	
 	
 	
 	/**
@@ -89,7 +92,7 @@ public class DinnerModel implements IDinnerModel{
 		dish3.addIngredient(dish3ing10);
 		dish3.addIngredient(dish3ing11);
 		dishes.add(dish3);
-		
+		/*
 		Dish dish4 = new Dish("Baked Brie",Dish.DESSERT,"bakedbrie","Preheat an oven to -400 degrees F (200 degrees C). Place the beef into a mixing bowl, and season with salt, onion, garlic salt, Italian seasoning, oregano, red pepper flakes, hot pepper sauce, and Worcestershire sauce; mix well. Add the milk, Parmesan cheese, and bread crumbs. Mix until evenly blended, then form into 1 1/2-inch meatballs, and place onto a baking sheet. Bake in the preheated oven until no longer pink in the center, 20 to 25 minutes.");
 		Ingredient dish4ing1 = new Ingredient("extra lean yoghurt",115,"g",20);
 		dish2.addIngredient(dish4ing1);
@@ -99,6 +102,7 @@ public class DinnerModel implements IDinnerModel{
 		Ingredient dish5ing1 = new Ingredient("extra lean yoghurt",115,"g",20);
 		dish5.addIngredient(dish5ing1);
 		dishes.add(dish5);
+		*/
 		
 	}
 	
@@ -150,6 +154,17 @@ public class DinnerModel implements IDinnerModel{
 	@Override
 	public Dish getSelectedDish(int type) {
 		return (Dish) getDishesOfType(type);
+	}
+	
+	public Dish getDish(String name, int type){
+		Dish searchedDish = null;
+		for(Dish d : getDishesOfType(type)){
+			if(d.getName().equalsIgnoreCase(name)){
+				searchedDish = d;
+				break;
+			}
+		}
+		return searchedDish;
 	}
 
 	@Override

@@ -4,37 +4,35 @@ package se.kth.csc.iprog.dinnerplanner.android;
 import se.kth.csc.iprog.dinnerplanner.android.view.MenuChooser;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import android.os.Bundle;
+import android.view.View.*;
 import android.view.View;
+import android.widget.Button;
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.Intent;
 
 
-public class MainActivity extends Activity{
+public class StartscreenActivity extends Activity implements OnClickListener{
 	
+	Button next;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// Default call to load previous state
 		super.onCreate(savedInstanceState);
 
-		// Creating the view class instance
-		/*DinnerModel model = ((DinnerPlannerApplication) this.getApplication())
-				.getModel();*/
 
-		//setContentView(R.layout.activity_main);
+		View mainView = findViewById(R.id.startscreen);
 		
-		Intent startscreen = new Intent(this, StartscreenActivity.class);
-		startActivity(startscreen);
+		setContentView(R.layout.activity_startscreen);
 		
-		
+		next = (Button) mainView.findViewById(R.id.mainNext);
+		next.setOnClickListener(this);
 	}
 
-	public static void goToActivity(int i) {
-		switch(i){
-		case '1':
-			
-			break;
+	@Override
+	public void onClick(View v) {
+		if(v==next){
+			MainActivity.goToActivity(1);	
 		}
 		
 	}
