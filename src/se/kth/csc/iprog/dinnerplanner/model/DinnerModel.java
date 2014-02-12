@@ -1,9 +1,11 @@
 package se.kth.csc.iprog.dinnerplanner.model;
 
 import java.util.HashSet;
+import java.util.Observable;
 import java.util.Set;
 
-public class DinnerModel implements IDinnerModel{
+
+public class DinnerModel extends Observable implements IDinnerModel{
 	
 
 	Set<Dish> dishes = new HashSet<Dish>();
@@ -145,7 +147,8 @@ public class DinnerModel implements IDinnerModel{
 	@Override
 	public void setNumberOfGuests(int numberOfGuests) {
 		numOfGuests = numberOfGuests;
-		
+		setChanged();
+		notifyObservers();
 	}
 
 	@Override

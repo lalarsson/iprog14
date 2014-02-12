@@ -10,7 +10,7 @@ public class DinnerPlannerApplication extends Application {
 	public DinnerModel getModel() {
 		return model;
 	}
-//test
+
 	public void setModel(DinnerModel model) {
 		this.model = model;
 	}

@@ -1,5 +1,8 @@
 package se.kth.csc.iprog.dinnerplanner.android;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import se.kth.csc.iprog.dinnerplanner.android.view.MenuChooser;
 import se.kth.csc.iprog.dinnerplanner.model.DinnerModel;
 import se.kth.csc.iprog.dinnerplanner.model.Dish;
@@ -7,8 +10,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
+import android.widget.TextView;
 
-public class MenuChooserActivity extends Activity {
+public class MenuChooserActivity extends Activity implements NumberPicker.OnValueChangeListener, Observer{
+	
+	MenuChooser chooser;
+	NumberPicker np;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +28,8 @@ public class MenuChooserActivity extends Activity {
 		DinnerModel model = ((DinnerPlannerApplication) this.getApplication())
 				.getModel();
 
+		chooser = new MenuChooser(findViewById(R.id.activity_menuchooser),model);
+		
 		setContentView(R.layout.activity_menuchooser);
 
 		LinearLayout ll1 = (LinearLayout) findViewById(R.id.linearLayoutViewStarter);
@@ -68,7 +78,27 @@ public class MenuChooserActivity extends Activity {
 		ll1.invalidate();
 		ll2.invalidate();
 		ll3.invalidate();
+		
+		np = (NumberPicker) findViewById(R.id.numberPicker1);
+		np.setMaxValue(99);
+	    np.setMinValue(0);
+	    np.setValue(50);
+	   	np.setOnValueChangedListener(this);
 
 	}
+
+	@Override
+	public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+		chooser.getModel().setNumberOfGuests(picker.getValue());
+		
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		TextView textView2 = (TextView) findViewById(R.id.textView2);
+		textView2.setText(chooser.getModel().getNumberOfGuests());
+	}
+	
+	
 
 }

@@ -36,6 +36,7 @@ public final class R {
         public static final int activity_main=0x7f070000;
         public static final int activity_menu=0x7f070003;
         public static final int activity_menuchooser=0x7f070014;
+        public static final int activity_startscreen=0x7f070022;
         public static final int button1=0x7f070001;
         public static final int example_text=0x7f070002;
         public static final int horizontalScrollViewDessert=0x7f070020;
@@ -63,7 +64,6 @@ public final class R {
         public static final int menu_textstarter=0x7f070011;
         public static final int numberPicker1=0x7f070016;
         public static final int scrollView1=0x7f070007;
-        public static final int startscreen=0x7f070022;
         public static final int textView1=0x7f070015;
         public static final int textView13=0x7f070027;
         public static final int textView14=0x7f070029;
