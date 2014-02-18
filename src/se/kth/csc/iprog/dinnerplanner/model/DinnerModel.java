@@ -8,8 +8,9 @@ import java.util.Set;
 public class DinnerModel extends Observable implements IDinnerModel{
 	
 
-	Set<Dish> dishes = new HashSet<Dish>();
-	private int numOfGuests, numOfDishes;
+	private Set<Dish> dishes = new HashSet<Dish>();
+	private Dish[] selectedDishes = new Dish[3];
+	private int numOfGuests;
 	
 	
 	/**
@@ -24,7 +25,6 @@ public class DinnerModel extends Observable implements IDinnerModel{
 	 */
 	public DinnerModel(){
 		numOfGuests = 0;
-		numOfDishes = 0;
 		
 		//Adding some example data, you can add more
 		Dish dish1 = new Dish("French toast",Dish.STARTER,"toast","In a large mixing bowl, beat the eggs. Add the milk, brown sugar and nutmeg; stir well to combine. Soak bread slices in the egg mixture until saturated. Heat a lightly oiled griddle or frying pan over medium high heat. Brown slices on both sides, sprinkle with cinnamon and serve hot.");
@@ -39,6 +39,7 @@ public class DinnerModel extends Observable implements IDinnerModel{
 		dish1.addIngredient(dish1ing4);
 		dish1.addIngredient(dish1ing5);
 		dishes.add(dish1);
+		selectedDishes[0] = dish1;
 		
 		
 		Dish dish2 = new Dish("Meat balls",Dish.MAIN,"meatballs","Preheat an oven to 400 degrees F (200 degrees C). Place the beef into a mixing bowl, and season with salt, onion, garlic salt, Italian seasoning, oregano, red pepper flakes, hot pepper sauce, and Worcestershire sauce; mix well. Add the milk, Parmesan cheese, and bread crumbs. Mix until evenly blended, then form into 1 1/2-inch meatballs, and place onto a baking sheet. Bake in the preheated oven until no longer pink in the center, 20 to 25 minutes.");
@@ -65,6 +66,7 @@ public class DinnerModel extends Observable implements IDinnerModel{
 		dish2.addIngredient(dish2ing10);
 		dish2.addIngredient(dish2ing11);
 		dishes.add(dish2);
+		selectedDishes[1] = dish2;
 		
 		
 		Dish dish3 = new Dish("Ice Cream",Dish.DESSERT,"icecream","Preheat an oven to -400 degrees F (200 degrees C). Place the beef into a mixing bowl, and season with salt, onion, garlic salt, Italian seasoning, oregano, red pepper flakes, hot pepper sauce, and Worcestershire sauce; mix well. Add the milk, Parmesan cheese, and bread crumbs. Mix until evenly blended, then form into 1 1/2-inch meatballs, and place onto a baking sheet. Bake in the preheated oven until no longer pink in the center, 20 to 25 minutes.");
@@ -91,7 +93,8 @@ public class DinnerModel extends Observable implements IDinnerModel{
 		dish3.addIngredient(dish3ing10);
 		dish3.addIngredient(dish3ing11);
 		dishes.add(dish3);
-		/*
+		selectedDishes[2] = dish3;
+		
 		Dish dish4 = new Dish("Baked Brie",Dish.DESSERT,"bakedbrie","Preheat an oven to -400 degrees F (200 degrees C). Place the beef into a mixing bowl, and season with salt, onion, garlic salt, Italian seasoning, oregano, red pepper flakes, hot pepper sauce, and Worcestershire sauce; mix well. Add the milk, Parmesan cheese, and bread crumbs. Mix until evenly blended, then form into 1 1/2-inch meatballs, and place onto a baking sheet. Bake in the preheated oven until no longer pink in the center, 20 to 25 minutes.");
 		Ingredient dish4ing1 = new Ingredient("extra lean yoghurt",115,"g",20);
 		dish2.addIngredient(dish4ing1);
@@ -101,7 +104,7 @@ public class DinnerModel extends Observable implements IDinnerModel{
 		Ingredient dish5ing1 = new Ingredient("extra lean yoghurt",115,"g",20);
 		dish5.addIngredient(dish5ing1);
 		dishes.add(dish5);
-		*/
+		
 		
 	}
 	
@@ -153,7 +156,14 @@ public class DinnerModel extends Observable implements IDinnerModel{
 
 	@Override
 	public Dish getSelectedDish(int type) {
-		return (Dish) getDishesOfType(type);
+		return selectedDishes[type-1];
+	}
+	
+	public void setSelectedDish(Dish d) {
+		selectedDishes[d.type-1] = d;
+		System.out.println("JA");
+		setChanged();
+		notifyObservers();
 	}
 	
 	public Dish getDish(String name, int type){
@@ -168,8 +178,8 @@ public class DinnerModel extends Observable implements IDinnerModel{
 	}
 
 	@Override
-	public Set<Dish> getFullMenu() {
-		return dishes;
+	public Dish[] getFullMenu() {
+		return selectedDishes;
 	}
 
 	@Override
@@ -184,14 +194,11 @@ public class DinnerModel extends Observable implements IDinnerModel{
 	@Override
 	public float getTotalMenuPrice() {
 		float price = 0;
-		for(Dish dish : dishes){
+		for(Dish dish : getFullMenu()){
 			for(Ingredient ingred : dish.getIngredients()){
 				price += ingred.price;
 			}
 		}
 		return price;
 	}
-	
-	
-
 }

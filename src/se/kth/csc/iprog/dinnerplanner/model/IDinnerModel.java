@@ -15,7 +15,7 @@ public interface IDinnerModel {
 	/**
 	 * Returns all the dishes on the menu.
 	 */
-	public Set<Dish> getFullMenu();
+	public Dish[] getFullMenu();
 	
 	/**
 	 * Returns all ingredients for all the dishes on the menu.
