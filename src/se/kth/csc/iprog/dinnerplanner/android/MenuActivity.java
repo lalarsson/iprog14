@@ -9,10 +9,23 @@ import se.kth.csc.iprog.dinnerplanner.model.Dish;
 import se.kth.csc.iprog.dinnerplanner.model.Ingredient;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class MenuActivity extends Activity {
+public class MenuActivity extends Activity implements OnClickListener {
+	
+	MenuChooser mainView;
+	int currentView;
+	Dish[] menu = new Dish[3];
+	DinnerModel model;
+	
+	ImageButton starterB;
+	ImageButton mainB;
+	ImageButton dessertB;
+	ImageButton ingredB;
+	ImageButton backB;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,20 +34,20 @@ public class MenuActivity extends Activity {
 		Dish starter = null;
 		Dish main = null;
 		Dish dessert = null;
-		Dish[] menu = new Dish[3];
+		
 
 		// Creating the view class instance
-		DinnerModel model = ((DinnerPlannerApplication) this.getApplication())
+		model = ((DinnerPlannerApplication) this.getApplication())
 				.getModel();
 
 		setContentView(R.layout.activity_menu);
-		MenuChooser mainView = new MenuChooser(findViewById(R.id.activity_menu), model);
+		mainView = new MenuChooser(findViewById(R.id.activity_menu), model);
 		/* Testing purposes */
-		int currentView = 3; // 0 for ingredients, 1 for start, 2 for main, 3
+		currentView = 0; // 0 for ingredients, 1 for start, 2 for main, 3
 								// for dessert
-		starter = model.getDish("French toast", 1);
-		main = model.getDish("Meat balls", 2);
-		dessert = model.getDish("Ice Cream", 3);
+		starter = model.getSelectedDish(1);
+		main =  model.getSelectedDish(2);
+		dessert =  model.getSelectedDish(3);
 
 		menu[0] = starter;
 		menu[1] = main;
@@ -51,42 +64,56 @@ public class MenuActivity extends Activity {
 		TextView tv = (TextView) findViewById(R.id.total_cost);
 		tv.setText("Total Cost: " + price);
 
-		ImageButton starterB = ((ImageButton) findViewById(R.id.menu_starter));
+		starterB = ((ImageButton) findViewById(R.id.menu_starter));
 		starterB.setImageResource(getResources().getIdentifier(
 				starter.getImage(), "drawable", getPackageName()));
 		TextView tvStarter = ((TextView) findViewById(R.id.menu_textstarter));
-		tvStarter.setText("Starter");
+		tvStarter.setText(menu[0].getName());
+		starterB.setOnClickListener(this);
 
-		ImageButton mainB = ((ImageButton) findViewById(R.id.menu_main));
+		mainB = ((ImageButton) findViewById(R.id.menu_main));
 		mainB.setImageResource(getResources().getIdentifier(main.getImage(),
 				"drawable", getPackageName()));
 		TextView tvMain = ((TextView) findViewById(R.id.menu_textmain));
-		tvMain.setText("Main");
+		tvMain.setText(menu[1].getName());
+		mainB.setOnClickListener(this);
 
-		ImageButton dessertB = ((ImageButton) findViewById(R.id.menu_dessert));
+		dessertB = ((ImageButton) findViewById(R.id.menu_dessert));
 		dessertB.setImageResource(getResources().getIdentifier(
 				dessert.getImage(), "drawable", getPackageName()));
 		TextView tvDessert = ((TextView) findViewById(R.id.menu_textdessert));
-		tvDessert.setText("Dessert");
+		tvDessert.setText(menu[2].getName());
+		dessertB.setOnClickListener(this);
+		
+		ingredB = ((ImageButton) findViewById(R.id.menu_ingred));
+		ingredB.setOnClickListener(this);
+		
+		backB = ((ImageButton) findViewById(R.id.imageButton1));
+		backB.setOnClickListener(this);
 
+		swapView();
+		
+
+	}
+	
+	void swapView(){
 		switch (currentView) {
 		case 0:
 			loadIngred(mainView, model, menu);
 			break;
 		case 1:
-			loadStarter(mainView, model, starter);
+			loadStarter(mainView, model, menu[0]);
 			break;
 		case 2:
-			loadMain(mainView, model, main);
+			loadMain(mainView, model, menu[1]);
 			break;
 		case 3:
-			loadDessert(mainView, model, dessert);
+			loadDessert(mainView, model, menu[2]);
 			break;
 		default:
 			loadDefault(mainView);
 			break;
 		}
-
 	}
 
 	void loadIngred(MenuChooser v, DinnerModel model, Dish[] menu) {
@@ -138,6 +165,29 @@ public class MenuActivity extends Activity {
 	void loadDefault(MenuChooser v) {
 		// no default
 
+	}
+
+	@Override
+	public void onClick(View v) {
+		
+		if (v==backB){
+			finish();
+		}
+		else if (v==starterB){
+			currentView=1;
+		}
+		else if (v==mainB){
+			currentView=2;
+		}
+		else if (v==dessertB){
+			currentView=3;
+		}
+		else if (v==ingredB){
+			currentView=0;
+		}
+		
+		swapView();
+		
 	}
 
 }
